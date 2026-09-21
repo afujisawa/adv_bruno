@@ -1,0 +1,41 @@
+info:
+  name: Criar_Signatario
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{host}}/api/v1/signers?access_token={{token}}"
+  params:
+    - name: access_token
+      value: "{{token}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "signer": {
+          "email": "email@email.com.br",
+          "auths": [
+            "api"
+          ],
+          "name": "NOME DO SIGNATÁRIO",
+          "documentation": "000.000.000-00",
+          "birthday": "1900-01-01",
+          "has_documentation": true,
+          "selfie_enabled": false,
+          "handwritten_enabled": false,
+          "location_required_enabled": false,
+          "official_document_enabled": false,
+          "liveness_enabled": false,
+          "facial_biometrics_enabled": false,
+          "delivery": "email"
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
